@@ -3,8 +3,9 @@ from sqlalchemy.orm import Session
 from app.database.database import get_db
 from app.database.model import Todo
 from app.schema.todo import TodoReturn, TodoCreate
+from .auth import verify_token
 
-router = APIRouter(prefix='/api/todo', tags=['todo'])
+router = APIRouter(prefix='/api/todo', tags=['todo'], dependencies=[Depends(verify_token)])
 
 
 @router.get('', response_model=list[TodoReturn])

@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.router import todo
+from app.router import auth, todo
 from app.database import model
 from app.database.database import engine
 
@@ -9,4 +9,5 @@ app = FastAPI(
     title='todo_app'
 )
 
+app.include_router(auth.router)
 app.include_router(todo.router)
