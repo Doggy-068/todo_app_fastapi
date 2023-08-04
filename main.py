@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from app.router import auth, todo, ws
+from app.router import auth, todo, ws, graphql
 from app.database import model
 from app.database.database import engine
 
@@ -15,3 +15,4 @@ app.mount('/static', StaticFiles(directory='static'), name='static')
 app.include_router(auth.router)
 app.include_router(todo.router)
 app.include_router(ws.router)
+app.include_router(graphql.router)
